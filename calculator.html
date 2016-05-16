@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html" />
+    <meta name="author" content="GallerySoft.info" />
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .nut{
+            border: 1px solid #dddddd;
+            width: 73px;
+            height: 33px;
+            text-align: center;
+            line-height: 33px;
+            background-color: #eeeeee;
+            border-radius: 2px;
+            float: left;
+            margin-left: 5px;
+            margin-top: 7px;
+            cursor: pointer;
+        }
+        .nut:active, .nut2:active, .nut3:active{
+            -webkit-transform: scale(0.9);
+
+        }
+        .nut2{
+            border: 1px solid #dddddd;
+            width: 152px;
+            height: 33px;
+            text-align: center;
+            line-height: 33px;
+            background-color: #eeeeee;
+            border-radius: 2px;
+            float: left;
+            margin-left: 5px;
+            margin-top: -33px;
+            cursor: pointer;
+        }
+        .nut3{
+            border: 1px solid #dddddd;
+            width: 73px;
+            height: 74px;
+            text-align: center;
+            line-height: 74px;
+            background-color: #eeeeee;
+            border-radius: 2px;
+            float: left;
+            margin-left: 5px;
+            margin-top: 7px;
+            cursor: pointer;
+        }
+        #nhap{
+            width: 312px;
+            border: none;
+            height: 61px;
+            margin: 10px 0 10px 5px  ;
+            font-size: 40px;
+            text-align: right;
+            background: url("bg.png") no-repeat;
+            background-size: 312px 61px;
+        }
+    </style>
+</head>
+<body>
+<script type="text/javascript">
+    function s(t) { document.getElementById('nhap').value = t }
+    function v() {
+        if(eval(document.getElementById('nhap').value)>0){
+            s("-" + (document.getElementById('nhap').value));
+        }
+        else{
+            s("" + (document.getElementById('nhap').value).substr(1,1000));
+        }
+    }
+    function a(t) { document.getElementById('nhap').value += t }
+    function kq() { try { s(eval(document.getElementById('nhap').value).toFixed(2)) } catch(kq) { s('Đừng đùa vậy!') } }
+    function no() {
+        alert("không biết nút có tác dụng gì, Đừng bấm lại nhé!");
+    }
+</script>
+<div style="width: 332px; height: 343px;background: url(bg-div.png) no-repeat" >
+    <div>
+        <input id="nhap" name="nhap" type="text" value="" onfocus="this.blur()">
+        <div >
+            <div class="nut" onclick="no()">MC</div>
+            <div class="nut" onclick="no()">M+</div>
+            <div class="nut" onclick="a('(')">(</div>
+            <div class="nut" onclick="a(')')">)</div>
+            <div class="nut" onclick="s('')">C</div>
+            <div class="nut" onclick="v()">+ / -</div>
+            <div class="nut" onclick="a('/')">/</div>
+            <div class="nut" onclick="a('*')">x</div>
+            <div class="nut" onclick="a('7')">7</div>
+            <div class="nut" onclick="a('8')">8</div>
+            <div class="nut" onclick="a('9')">9</div>
+            <div class="nut" onclick="a('-')">-</div>
+            <div class="nut" onclick="a('4')">4</div>
+            <div class="nut" onclick="a('5')">5</div>
+            <div class="nut" onclick="a('6')">6</div>
+            <div class="nut" onclick="a('+')">+</div>
+            <div class="nut" onclick="a('1')">1</div>
+            <div class="nut" onclick="a('2')">2</div>
+            <div class="nut" onclick="a('3')">3</div>
+            <div class="nut3" onclick="kq()">=</div>
+            <div>
+                <div class="nut2" onclick="a('0')">0</div>
+                <div class="nut"style="margin-top: -33px" onclick="a('.')">.</div>
+            </div>
+        </div>
+        <img id=" logo" src="logo.png" style="width: 33px;height: 33px; margin:20px 0 0 140px "/>
+    </div>
+</div>
+</body>
+</html>

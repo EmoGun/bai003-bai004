@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html" />
+    <meta name="author" content="GallerySoft.info" />
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+
+        <script type="text/javascript">
+            var x,y;
+            var total;
+            document.write("<table border='1' width='auto' height='auto'> ")
+            document.write("<tr>")
+            for(x=1;x<=5;x++){
+                    document.write("<td >")
+                    for (y = 1; y <= 10; y++) {
+                        total = x * y;
+                        document.write(+x + " " + "x" + " " + y + " " + "=" + " " + total)
+                        document.write("<br/>")
+                    }
+                    document.write("</td>")
+            }
+            document.write("</tr>")
+            document.write("<tr>")
+            for(x=6;x<=10;x++){
+                document.write("<td >")
+                for (y = 1; y <= 10; y++) {
+                    total = x * y;
+                    document.write(+x + " " + "x" + " " + y + " " + "=" + " " + total)
+                    document.write("<br/>")
+                }
+                document.write("</td>")
+            }
+            document.write("</tr>")
+            document.write("</table>")
+        </script>
+        <img id=" logo" src="logo.png" style="width: 33px;height: 33px; margin:20px 0 0 140px "/>
+
+</body>
+</html>

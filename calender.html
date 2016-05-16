@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html" />
+    <meta name="author" content="GallerySoft.info" />
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            font-size: 25px;
+            font-family: Roboto;
+        }
+        body{
+            /*background: url("logo.png");
+            background-color: black;
+            padding-top: 500px;*/
+
+        }
+        .calendar {
+            border-radius: 18px;
+            width: 1140px;
+            margin-top: 100px;
+            margin-left: 500px;
+            height: 915px;
+            padding: 0;
+        }
+        #top{
+            box-shadow: 0px 0px 1px 0px black;
+            box-sizing: border-box;
+            background-color: #f95050;
+            width: 1130px;
+            height: 145px;
+            margin: 0px;
+            border-top-left-radius: 18px;
+            border-top-right-radius: 18px;
+            text-align: center;
+            line-height: 145px;
+            font-size: 60px;
+            color: white;
+        }
+        .calendar1{
+            padding: 1px;
+            width: 1130px;
+            margin-top: 150px;
+            margin-left: 500px;
+            height: 61px;
+            border-radius: 18px;
+            background-color: white;
+            box-shadow: 0px 0px 1px 0px black;
+
+        }
+        .calendar div div{
+            box-shadow: 0px 0px 1px 0px #bdbdbd ;
+            background-color: #ffffff;
+            background: no-repeat;
+            text-align: center;
+            width: 14.2857%;
+            line-height: 145px;
+            height: 145px;
+            font-weight: bold;
+        }
+        .calendar1 div div{
+            width: 161px;
+            text-align: center;
+            line-height: 61px;
+            color: #ff0000;
+            border-radius: 18px ;
+        }
+        .calendar div, .calendar1 div{
+            display: inline-block;
+        }
+
+        .today {
+            color: white;
+            font-weight: bold;
+        }
+
+        .ngay_ngoai {
+            color: #bdbdbd;
+            font-weight: bold;
+        }
+        .thuc_tuan div{
+            border: none;
+        }
+        .tuan{
+            width: 1130px;
+        }
+        .tuan:last-child div:first-child{
+            border-bottom-left-radius: 18px;
+        }
+        .tuan:last-child div:last-child{
+            border-bottom-right-radius: 18px;
+        }
+        .tuan:last-child{
+            box-shadow: 0px 5px 1px 0px #bdbdbd;
+            border-radius: 18px;
+        }
+        #today{
+            background-color: #ff0000;
+            width: 50%;
+            height: 50%;
+            line-height: 75px;
+            border-radius: 50%;
+        }
+        #a_19{
+            background-image: url("logo.png");
+            background-size: 20px 20px;
+            background-position: 95% 5%;
+        }
+        #lui:before{
+            font-family: 'FontAwesome';
+            content: "\f053";
+        }
+        #tien:before{
+            font-family: 'FontAwesome';
+            content: "\f054";
+        }
+        #lui,#tien{
+            box-shadow: none;
+        }
+    </style>
+    <script type="text/javascript">
+        function calendar() {
+            var date = new Date();
+            var day = date.getDate();
+            var month = date.getMonth();
+            var year = date.getFullYear();
+            months = new Array('January', 'February', 'March', 'April', 'May', 'June', 'Jully', 'August', 'September', 'October', 'November', 'December');
+            ngay_trong_thang = new Array(31,28,31,30,31,30,31,31,30,31,30,31);
+            if (year % 4 == 0 && year != 1900) {
+                ngay_trong_thang[1] = 29;
+            }
+            total = ngay_trong_thang[month];
+            var date_today = months[month] + ' ' + year;
+            ngay = date;
+            ngay.setDate(6);
+            ngay = ngay.getDay();
+            document.write('<div class="calendar"><div id="top"><div id="lui" onclick="lui()"></div>' + date_today + '<div id="tien" onclick="tien()"></div></div>');
+            week = 0;
+            for(i=1;i<=ngay;i++) {
+                if (week == 0) {
+                    document.write('<div class="tuan">');
+                    document.write('<div class="ngay_ngoai" style="background-color: white">' + (ngay_trong_thang[month - 1] - ngay + i) + '</div>');
+                    week++;
+                }
+                if (week != 0) {
+                    if(i%2==0) {
+                        document.write('<div class="ngay_ngoai" style="background-color: white">' + (ngay_trong_thang[month - 1] - ngay + i) + '</div>');
+
+                    }
+                    if(i%2==1) {
+                        document.write('<div class="ngay_ngoai" style="background-color: #fcfcfc">' + (ngay_trong_thang[month - 1] - ngay + i) + '</div>');
+
+                    }
+                    week++;
+                }
+                if (week == 7) {
+                    document.write('</div>');
+                    week = 0;
+                }
+            }
+            for (i = 1; i <= total; i++) {
+                if (week == 0) {
+                    document.write('<div class="tuan">');
+
+                    }
+                if (day == i) {
+                    if(i%2 == 0){
+                        document.write('<div class="today" style="background-color: white"><div id="today" >' + i + '</div></div>');}
+                    if(i%2 == 1){
+                        document.write('<div class="today" style="background-color: #fcfcfc"><div id="today" >' + i + '</div></div>');}
+                }
+                else {
+                    if(i%2 ==0){
+                        document.write('<div id="a_'+ i +'"style="background-color: white">' + i + '</div>');
+                    }
+                    if(i%2 ==1){
+                        document.write('<div id="a_'+ i +'" style="background-color: #fcfcfc">' + i + '</div>');
+                    }
+                }
+                week++;
+                if (week == 7) {
+                    document.write('</div>');
+                    week = 0;
+                }
+            }
+            for (i = 1; week != 0; i++) {
+                if(i%2 ==0){
+                    document.write('<div class="ngay_ngoai" style="background-color: #fcfcfc">' + i + '</div>');
+                }
+                if(i%2 ==1){
+                    document.write('<div class="ngay_ngoai" style="background-color: white">' + i + '</div>');
+                }
+                week++;
+                if (week == 7) {
+                    document.write('</div>');
+                    week = 0;
+                }
+            }
+            document.write('</div>');
+            document.write('<div class="calendar1">');
+            document.write('<div class="thu_tuan"><div>MO</div><div>TU</div><div>WE</div><div>TH</div><div>FR</div><div>SA</div><div>SU</div></div>');
+            document.write('</div>');
+            return true;
+        }
+        function lui() {
+            month= month-1;
+            calendar(month);
+
+        }
+    </script>
+</head>
+<body>
+<script type="text/javascript">
+    calendar();
+</script>
+</body>
+</html>
